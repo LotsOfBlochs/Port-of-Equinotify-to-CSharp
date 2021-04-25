@@ -26,7 +26,7 @@ namespace Music_Player.mainPackage
             }
             using (WebClient webClient = new WebClient())
             {
-                webClient.DownloadFile("https://img.youtube.com/vi/" + Constants.id + "/0.jpg", Constants.thumbnailDownloadPath + "\\" + Constants.title + ".jpg");
+                webClient.DownloadFile("https://i.ytimg.com/vi/" + Constants.id + "/hq720.jpg", Constants.thumbnailDownloadPath + "\\" + Constants.title + ".jpg");
             }
         }
     }

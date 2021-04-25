@@ -7,13 +7,13 @@ namespace Music_Player.mainPackage
     class Player
     {
         public static bool songPlaying = true;
+        public WindowsMediaPlayer player = new WindowsMediaPlayer();
+        //var clip = player.newMedia(file);
         public void Music()
         {
             string file = Path.GetFullPath(Constants.songDownloadPath + "\\" + Constants.title + ".wav");
-            var player = new WindowsMediaPlayer();
-            var clip = player.newMedia(file);
             player.URL = file;
-            Console.WriteLine(TimeSpan.FromSeconds(clip.duration));
+            Console.WriteLine(TimeSpan.FromSeconds(player.newMedia(file).duration));
             player.PositionChange +=
                 new _WMPOCXEvents_PositionChangeEventHandler(Player_PositionChange);
             player.PlayStateChange += new _WMPOCXEvents_PlayStateChangeEventHandler(Player_PlayStateChanged);

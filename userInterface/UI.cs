@@ -12,7 +12,7 @@ namespace Music_Player.userInterface
         
         public void startGUI()
         {
-            win.drawWindow
+            //win.drawWindow();
         }
     }
 }
