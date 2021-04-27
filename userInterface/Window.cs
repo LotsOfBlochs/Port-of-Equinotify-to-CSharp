@@ -47,7 +47,10 @@ namespace Music_Player.userInterface
         }
         public void redrawPanels()
         {
-
+            BottomPanel.bottomPanel.SetBounds(0, f.Height - 100, f.Width, 61);
+            TopPanel.topPanel.SetBounds(0, 0, f.Width, 35);
+            SearchBox.searchBox.SetBounds(5,5, f.Width - 105, f.Height - 132);
+            SearchBox.enterSearch.SetBounds(f.Width - 100, 5, 80, 25);
         }
     }
 }
