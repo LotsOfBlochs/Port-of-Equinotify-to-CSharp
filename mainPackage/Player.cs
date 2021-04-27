@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using WMPLib;
+using Music_Player.userInterface;
 
 namespace Music_Player.mainPackage
 {
@@ -8,14 +9,12 @@ namespace Music_Player.mainPackage
     {
         public static bool songPlaying = true;
         public WindowsMediaPlayer player = new WindowsMediaPlayer();
-        //var clip = player.newMedia(file);
         public void Music()
         {
             string file = Path.GetFullPath(Constants.songDownloadPath + "\\" + Constants.title + ".wav");
             player.URL = file;
-            Console.WriteLine(TimeSpan.FromSeconds(player.newMedia(file).duration));
-            player.PositionChange +=
-                new _WMPOCXEvents_PositionChangeEventHandler(Player_PositionChange);
+            SongLength.songLength.Text = TimeSpan.FromSeconds(player.controls.currentItem.duration).ToString();
+            player.PositionChange += new _WMPOCXEvents_PositionChangeEventHandler(Player_PositionChange);
             player.PlayStateChange += new _WMPOCXEvents_PlayStateChangeEventHandler(Player_PlayStateChanged);
             player.controls.play();
             while (songPlaying)
@@ -31,7 +30,7 @@ namespace Music_Player.mainPackage
 
         private void Player_PositionChange(double oldPosition, double newPosition)
         {
-            throw new NotImplementedException();
+            SongLength.songLocation.Text = TimeSpan.FromSeconds(player.controls.currentPosition).ToString();
         }
 
     }

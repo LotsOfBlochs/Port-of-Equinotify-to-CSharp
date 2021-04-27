@@ -1,6 +1,4 @@
-﻿using System.Threading;
-using System;
-
+﻿using Music_Player.userInterface;
 
 namespace Music_Player.mainPackage
 {
@@ -14,13 +12,10 @@ namespace Music_Player.mainPackage
         public static void start()
         {
             MakeFile mf = new MakeFile();
-            Downloader down = new Downloader();
-            //UI ui = new UI();
+            UI ui = new UI();
 
             mf.dirGen();
-
-
-            //ui.startGuI();
+            ui.startGUI();
             
         }
     }

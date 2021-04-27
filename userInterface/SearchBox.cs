@@ -12,7 +12,7 @@ namespace Music_Player.userInterface
         WebScraper scraper = new WebScraper();
         Downloader d = new Downloader();
         public static Player player = new Player();
-        //Pause pause = new Pause();
+        Pause pause = new Pause();
         bool firstSong = true;
 
         public void addSearch()
@@ -25,6 +25,8 @@ namespace Music_Player.userInterface
             enterSearch.Enter += EnterSearch;
             searchBox.SetBounds(5, 5, Constants.windowWidth - 100 - 25, 25);
             searchBox.Enter += EnterSearch;
+            TopPanel.topPanel.Controls.Add(searchBox);
+            TopPanel.topPanel.Controls.Add(enterSearch);
         }
 
         private void EnterSearch(object sender, System.EventArgs e)
@@ -49,7 +51,27 @@ namespace Music_Player.userInterface
 
                 string song = Path.GetFullPath(Constants.songDownloadPath + "\\" + checkTitle + ".wav");
 
+                if (File.Exists(song))
+                {
+                    SongName.songInfo.Text = Constants.title;
+                    //currentThumbnail.setImage;
+                    //thumbnailLabel
+                    Constants.scraperURL = "https://www.youtube.com/results?search_query=";
+                    Constants.id = "";
 
+                    player.Music();
+                }
+                else
+                {
+                    Constants.scraperURL = "https://www.youtube.com/results?search_query=";
+                    d.download_song();
+                    d.download_thumbnail();
+                    SongName.songInfo.Text = Constants.title;
+
+                    player.Music();
+
+                    Pause.isPaused = false;
+                }
             }
         }
 
