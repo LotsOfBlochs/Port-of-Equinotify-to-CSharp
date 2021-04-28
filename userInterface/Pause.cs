@@ -4,14 +4,15 @@ namespace Music_Player.userInterface
 {
     class Pause
     {
-        public static Button pause;
+        public static Button pause = new();
         double framePos;
 
         public static bool isPaused = false;
         
         public void addButton()
         {
-            pause = new Button();
+            pause.Size = new System.Drawing.Size(80, 25);
+            pause.AutoSize = true;
             pause.Text = "Pause";
             pause.Click += Pause_Click;
             BottomPanel.bottomPanel.Controls.Add(pause);

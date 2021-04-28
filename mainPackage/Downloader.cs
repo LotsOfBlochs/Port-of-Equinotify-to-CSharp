@@ -1,7 +1,6 @@
 ﻿using YoutubeExplode;
 using YoutubeExplode.Converter;
 using System.Net;
-using System;
 
 namespace Music_Player.mainPackage
 {
@@ -26,7 +25,11 @@ namespace Music_Player.mainPackage
             }
             using (WebClient webClient = new WebClient())
             {
+                //try
+                //{
                 webClient.DownloadFile("https://i.ytimg.com/vi/" + Constants.id + "/hq720.jpg", Constants.thumbnailDownloadPath + "\\" + Constants.title + ".jpg");
+                //}
+                //catch {  }
             }
         }
     }

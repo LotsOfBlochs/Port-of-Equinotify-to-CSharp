@@ -10,6 +10,7 @@ namespace Music_Player.userInterface
 
         public void addSongButton()
         {
+            addSong.Size = new System.Drawing.Size(80, 25);
             addSong.Text = "add";
             addSong.Click += AddSong_Click;
             BottomPanel.bottomPanel.Controls.Add(addSong);
@@ -29,10 +30,14 @@ namespace Music_Player.userInterface
 
             if(sender == addSong)
             {
-                File.Copy(songFile, songFile);
+                try
+                {
+                    File.Copy(songFile, songFile);
 
-                Constants.playlistSongTitles.Add(Constants.title);
-                Constants.playlistSongPaths.Add(Constants.songDownloadPath + "\\" + Constants.title + ".wav");
+                    Constants.playlistSongTitles.Add(Constants.title);
+                    Constants.playlistSongPaths.Add(Constants.songDownloadPath + "\\" + Constants.title + ".wav");
+                }
+                catch { }
             }
         }
     }

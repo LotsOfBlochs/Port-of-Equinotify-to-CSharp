@@ -12,6 +12,7 @@ namespace Music_Player.userInterface
         public void displayLength()
         {
             songLength.Text = "00:00";
+            colon.Size = new System.Drawing.Size(5, 20);
             colon.Text = "|";
             songLocation.Text = "00:00";
             BottomPanel.bottomPanel.Controls.Add(songLocation);

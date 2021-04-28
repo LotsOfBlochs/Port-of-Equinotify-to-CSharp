@@ -5,10 +5,13 @@ namespace Music_Player.mainPackage
 {
     class WebScraper
     {
-        public async void FindID()
+        static string id = "";
+        static string title = "";
+        public async System.Threading.Tasks.Task<string> FindIDAsync()
         {
+            id = "";
             var config = Configuration.Default.WithDefaultLoader();
-            var address = "https://www.youtube.com/results?search_query=merci+stephane+legar";
+            var address = Constants.scraperURL;
             var context = BrowsingContext.New(config);
             var document = await context.OpenAsync(address);
             string web = document.DocumentElement.OuterHtml;
@@ -16,16 +19,18 @@ namespace Music_Player.mainPackage
             {
                 if(web.Substring(i, i + 7).Equals(" videoID"))
                 {
-                    Constants.id = web.Substring(i + 10, 1 + 21);
+                    string id = web.Substring(i + 10, 1 + 21);
                     break;
                 }
             }
+            return id;
         }
 
-        public async void FindSongName()
+        public async System.Threading.Tasks.Task<string> FindSongName()
         {
+            title = "";
             var config = Configuration.Default.WithDefaultLoader();
-            var address = "https://www.youtube.com/results?search_query=merci+stephane+legar";
+            var address = Constants.scraperURL;
             var context = BrowsingContext.New(config);
             var document = await context.OpenAsync(address);
             string web = document.DocumentElement.OuterHtml;
@@ -37,7 +42,7 @@ namespace Music_Player.mainPackage
                     for (int n = 1, j = 0; grabbingTitle; n++, j++)
                     {
                         if(!web.Substring(i + 25 + j, i + 25 + n).Equals("\"")){
-                            Constants.title = Constants.title + web.Substring(i + 25 + j, i + 25 + n);
+                            title = title + web.Substring(i + 25 + j, i + 25 + n);
                         }else if (web.Substring(i + 25 + j, i + 25 + n).Equals("\""))
                         {
                             grabbingTitle = false;
@@ -46,6 +51,7 @@ namespace Music_Player.mainPackage
                     break;
                 }
             }
+            return title;
         }
     }
 }

@@ -11,10 +11,10 @@ namespace Music_Player.mainPackage
 
         public static void start()
         {
-            //MakeFile mf = new MakeFile();
+            MakeFile mf = new MakeFile();
             UI ui = new UI();
 
-            //mf.dirGen();
+            mf.dirGen();
             ui.startGUI();
             
         }

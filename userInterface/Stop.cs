@@ -9,7 +9,8 @@ namespace Music_Player.userInterface
 
         public void addButton()
         {
-            stopButton.Text = " Stop";
+            stopButton.Size = new System.Drawing.Size(80, 25);
+            stopButton.Text = "Stop";
             stopButton.Click += StopButton_Click;
             BottomPanel.bottomPanel.Controls.Add(stopButton);
         }

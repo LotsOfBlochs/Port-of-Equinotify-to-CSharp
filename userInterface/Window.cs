@@ -1,10 +1,11 @@
 ﻿using Music_Player.mainPackage;
 using System.Windows.Forms;
 using System.Drawing;
+using System;
 
 namespace Music_Player.userInterface
 {
-    class Window
+    class Window : Form
     {
         public static Form f = new Form();
 
@@ -21,13 +22,10 @@ namespace Music_Player.userInterface
             f.Icon = ico;
             drawPanels();
             f.Show();
-            f.Resize += f_Resize; 
-            while (true)
-            {
-                System.Threading.Thread.Sleep(new System.TimeSpan(0, 0, 10));
-            }
+            f.Resize += f_Resize;
+            Application.Run(f);
+            //while (true){}
         }
-
 
         public void drawPanels() {
             bottomPanel.init();
